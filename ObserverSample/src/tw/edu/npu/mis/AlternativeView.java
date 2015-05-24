@@ -1,5 +1,7 @@
+package tw.edu.npu.mis;
+
 /*
- * Copyright (c) 2015, Samael Wang <freesamael@gmail.com>
+ * Copyright (c) 2015, STP
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,34 +25,40 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package tw.edu.npu.mis;
 
 /**
- * The domain model.
  *
- * @author Samael Wang <freesamael@gmail.com>
+ * @author STP
  */
-public class Model extends Subject{
+public class AlternativeView implements Observer ,Showable{
+    private final String mName;
+    private final Window mWindow;
+    private final Model mModel;
 
-    private String mData;
-
-    /**
-     * Get model content.
-     *
-     * @return {@link String}
-     */
-    public String getData() {
-        return mData;
+    public AlternativeView(String name, Window window, Model model) {
+        mName = name;
+        mWindow = window;
+        mModel = model;
+        mModel.attach(this);
     }
 
     /**
-     * Update model.
-     *
-     * @param data A {@link String} data.
+     * Invalidate the view, which indicates it needs to be redrawn later.
      */
-    public void setData(String data) {
-        mData = data;
-        notifyObserver();
+    public void invalidate() {
+        mWindow.schduleRedraw(this);
+    }
+
+    /**
+     * Show the content of the model on the console.
+     */
+    public void onDraw() {
+        System.out.println("AlternativeView (" + mName + "): " + new StringBuilder(mModel.getData()).reverse());
+    }
+    @Override
+    public void update(){
+        invalidate();
     }
 
 }
+
