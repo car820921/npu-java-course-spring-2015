@@ -34,7 +34,11 @@ public class AlternativeView implements Observer ,Showable{
     private final String mName;
     private final Window mWindow;
     private final Model mModel;
-
+    /**
+     * @param name
+     * @param window
+     * @param model 
+     */
     public AlternativeView(String name, Window window, Model model) {
         mName = name;
         mWindow = window;
