@@ -35,6 +35,10 @@ import java.util.Scanner;
 public class Controller {
 
     private final Model mModel;
+    /**
+     * Collroller Class Constructor
+     * @param model 
+     */
 
     public Controller(Model model) {
         mModel = model;

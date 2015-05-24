@@ -35,6 +35,7 @@ public class AlternativeView implements Observer ,Showable{
     private final Window mWindow;
     private final Model mModel;
     /**
+     * AlternativeView Class Constructor
      * @param name
      * @param window
      * @param model 
@@ -59,6 +60,7 @@ public class AlternativeView implements Observer ,Showable{
     public void onDraw() {
         System.out.println("AlternativeView (" + mName + "): " + new StringBuilder(mModel.getData()).reverse());
     }
+    
     @Override
     public void update(){
         invalidate();
