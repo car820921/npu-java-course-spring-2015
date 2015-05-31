@@ -45,7 +45,8 @@ public class Model extends Subject{
 
     /**
      * Update model.
-     *
+     *繼承subject，可套用notifyObserver方法
+
      * @param data A {@link String} data.
      */
     public void setData(String data) {
