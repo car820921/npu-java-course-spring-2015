@@ -31,12 +31,18 @@ package tw.edu.npu.mis;
  * @author Samael Wang <freesamael@gmail.com>
  */
 public class View implements Observer,Showable{
+    /**
+     * View class Constructor,套用Observer及Showable實作方法
+     */
 
     private final String mName;
     private final Window mWindow;
     private final Model mModel;
-
+    
     public View(String name, Window window, Model model) {
+        /**
+         * 宣告建構子名稱，把當前View物件帶進attach方法中
+         */
         mName = name;
         mWindow = window;
         mModel = model;
@@ -56,6 +62,9 @@ public class View implements Observer,Showable{
     public void onDraw() {
         System.out.println("View (" + mName + "): " + mModel.getData());
     }
+    /**
+     * 呼叫View中的invalidate方法
+     */
     @Override
     public void update(){
         invalidate();
