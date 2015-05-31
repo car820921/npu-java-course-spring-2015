@@ -30,5 +30,8 @@ package tw.edu.npu.mis;
  * @author STP
  */
 public interface Showable {
+    /**
+     * 建立Showable的實作方法
+     */
     void onDraw();
 }

@@ -31,7 +31,7 @@ package tw.edu.npu.mis;
  */
 public interface Observer {
     /**
-     * 宣告Oserver實作方法
+     * 建立Oserver實作方法
      */
     void update();
 }
