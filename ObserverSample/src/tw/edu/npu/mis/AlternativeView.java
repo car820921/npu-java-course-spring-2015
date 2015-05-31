@@ -56,6 +56,7 @@ public class AlternativeView implements Observer ,Showable{
 
     /**
      * Show the content of the model on the console.
+     * 輸出字串時執行到AlternativeView會將字串翻轉
      */
     public void onDraw() {
         System.out.println("AlternativeView (" + mName + "): " + new StringBuilder(mModel.getData()).reverse());
