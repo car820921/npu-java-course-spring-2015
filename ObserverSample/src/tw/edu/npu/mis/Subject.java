@@ -32,14 +32,27 @@ import java.util.ArrayList;
  * @author STP
  */
 public class Subject {
+    /**
+     * 初始化Observer物件，指定ArrayList型態
+     */
     ArrayList<Observer> mObserver = new ArrayList<>();
-    
+    /**
+     * 加入Observer元素至ArrayList
+     * @param o 
+     */
     public void attach(Observer o){
         mObserver.add(o);
     }
+    /**
+     * 從ArrayList刪除Observer特定元素
+     * @param o 
+     */
     public void detach(Observer o){
         mObserver.remove(o);
     }
+    /**
+     * 更新view從ArratList抓取
+     */
     public void notifyObserver(){
         for (Observer o :mObserver){
             o.update();
