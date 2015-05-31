@@ -60,7 +60,9 @@ public class AlternativeView implements Observer ,Showable{
     public void onDraw() {
         System.out.println("AlternativeView (" + mName + "): " + new StringBuilder(mModel.getData()).reverse());
     }
-    
+    /**
+     * 呼叫View中的invalidate方法
+     */
     @Override
     public void update(){
         invalidate();
