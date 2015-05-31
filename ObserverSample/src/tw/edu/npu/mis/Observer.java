@@ -30,5 +30,8 @@ package tw.edu.npu.mis;
  * @author STP
  */
 public interface Observer {
+    /**
+     * 宣告Oserver實作方法
+     */
     void update();
 }
