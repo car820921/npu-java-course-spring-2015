@@ -8,8 +8,9 @@ package tw.edu.npu.mis;
 /**
  * The model class of the calculator application.
  */
-public class Calculator {
-    
+public class Calculator extends java.util.Observable {
+    String string= "",sym;
+    int num,num2,sum;
     /**
      * The available operators of the calculator.
      */
@@ -34,27 +35,101 @@ public class Calculator {
     }
     
     public void appendDigit(int digit) {
-        // TODO code application logic here
+      string += String.valueOf(digit);
+      getDisplay();
     }
     
-    public void appendDot() {
-        // TODO code application logic here
+    public void appendDot(String dot) {
+        string += String.valueOf(dot);
+        getDisplay();
     }
     
     public void performOperation(Operator operator) {
-        // TODO code application logic here
+        switch(operator)
+        {
+            case PLUS:
+                num = Integer.parseInt(string);
+                string= "";
+                getDisplay();
+                sym ="+";
+                break;
+            case MINUS:
+                num = Integer.parseInt(string);
+                string= "";
+                getDisplay();
+                sym ="-";
+                break;
+            case TIMES:
+                num = Integer.parseInt(string);
+                string= "";
+                getDisplay();
+                sym ="*";
+                break;
+            case OVER:
+                num = Integer.parseInt(string);
+                string= "";
+                getDisplay();
+                sym ="/";
+                break;
+            case CLEAR_ENTRY:
+                string= "";
+                getDisplay();
+                break;
+            
+            case EQUAL:
+                if(sym =="+")
+                {
+                    num2 = Integer.parseInt(string);
+                    sum = num+num2;
+                    string = String.valueOf(sum);
+                    getDisplay();
+                    string="";
+                }
+                if(sym =="-")
+                {
+                    num2 = Integer.parseInt(string);
+                    sum = num-num2;
+                    string = String.valueOf(sum);
+                    getDisplay();
+                    string="";
+                }
+                if(sym =="*")
+                {
+                    num2 = Integer.parseInt(string);
+                    sum = num*num2;
+                    string = String.valueOf(sum);
+                    getDisplay();
+                    string="";
+                }
+                if(sym =="/")
+                {
+                    num2 = Integer.parseInt(string);
+                    sum = num/num2;
+                    string = String.valueOf(sum);
+                    getDisplay();
+                    string="";
+                }
+                
+                
+                break;
+        }
     }
     
     public String getDisplay() {
+        setChanged();
+        notifyObservers(string);
         // TODO code application logic here
         return null;
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public void operator(String txt)
+    {
+        if(txt =="+") performOperation(Operator.PLUS);
+        if(txt =="-") performOperation(Operator.MINUS);
+        if(txt =="*") performOperation(Operator.TIMES);
+        if(txt =="/") performOperation(Operator.OVER);
+        if(txt =="CE") performOperation(Operator.CLEAR_ENTRY);
+        if(txt =="=") performOperation(Operator.EQUAL);
     }
+  
 
 }
