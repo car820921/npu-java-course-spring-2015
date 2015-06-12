@@ -77,7 +77,37 @@ public class Calculator extends java.util.Observable {
                 break;
             
             case EQUAL:
-                if(sym =="+")
+                switch(sym){
+                    case "+":
+                        num2 = Integer.parseInt(string);
+                        sum = num+num2;
+                        string = String.valueOf(sum);
+                        getDisplay();
+                        string="";
+                        break;
+                    case "-":
+                        num2 = Integer.parseInt(string);
+                        sum = num-num2;
+                        string = String.valueOf(sum);
+                        getDisplay();
+                        string="";
+                        break;
+                    case "*":
+                        num2 = Integer.parseInt(string);
+                        sum = num*num2;
+                        string = String.valueOf(sum);
+                        getDisplay();
+                        string="";
+                        break;
+                    case "/":
+                        num2 = Integer.parseInt(string);
+                        sum = num/num2;
+                        string = String.valueOf(sum);
+                        getDisplay();
+                        string="";
+                        break;
+                }
+                /*if(sym =="+")
                 {
                     num2 = Integer.parseInt(string);
                     sum = num+num2;
@@ -108,7 +138,7 @@ public class Calculator extends java.util.Observable {
                     string = String.valueOf(sum);
                     getDisplay();
                     string="";
-                }
+                }*/
                 
                 
                 break;
