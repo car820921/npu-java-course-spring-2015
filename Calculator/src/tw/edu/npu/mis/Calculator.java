@@ -7,6 +7,7 @@ package tw.edu.npu.mis;
 
 /**
  * The model class of the calculator application.
+ * 宣告Calculator建構子
  */
 public class Calculator extends java.util.Observable {
     String string= "",sym;
@@ -33,17 +34,26 @@ public class Calculator extends java.util.Observable {
         MEM_MINUS,   // M-
         MEM_RECALL   // MR
     }
-    
+    /**
+     * 按下按鈕JFrame即出現數字
+     * @param digit 
+     */
     public void appendDigit(int digit) {
       string += String.valueOf(digit);
       getDisplay();
     }
-    
+    /**
+     * 小數點判斷
+     * @param dot 
+     */
     public void appendDot(String dot) {
         string += String.valueOf(dot);
         getDisplay();
     }
-    
+    /**
+     * 判斷加、減、乘、除、等於、情除判斷
+     * @param operator 
+     */
     public void performOperation(Operator operator) {
         switch(operator)
         {
@@ -77,37 +87,8 @@ public class Calculator extends java.util.Observable {
                 break;
             
             case EQUAL:
-                switch(sym){
-                    case "+":
-                        num2 = Integer.parseInt(string);
-                        sum = num+num2;
-                        string = String.valueOf(sum);
-                        getDisplay();
-                        string="";
-                        break;
-                    case "-":
-                        num2 = Integer.parseInt(string);
-                        sum = num-num2;
-                        string = String.valueOf(sum);
-                        getDisplay();
-                        string="";
-                        break;
-                    case "*":
-                        num2 = Integer.parseInt(string);
-                        sum = num*num2;
-                        string = String.valueOf(sum);
-                        getDisplay();
-                        string="";
-                        break;
-                    case "/":
-                        num2 = Integer.parseInt(string);
-                        sum = num/num2;
-                        string = String.valueOf(sum);
-                        getDisplay();
-                        string="";
-                        break;
-                }
-                /*if(sym =="+")
+                
+                if(sym =="+")
                 {
                     num2 = Integer.parseInt(string);
                     sum = num+num2;
@@ -138,19 +119,26 @@ public class Calculator extends java.util.Observable {
                     string = String.valueOf(sum);
                     getDisplay();
                     string="";
-                }*/
+                }
                 
                 
                 break;
         }
     }
-    
+    /**
+     * 顯示判斷運算結果
+     * @return 
+     */
     public String getDisplay() {
         setChanged();
         notifyObservers(string);
         // TODO code application logic here
         return null;
     }
+    /**
+     * 存取運算符號，使JFrame可套用
+     * @param txt 
+     */
     public void operator(String txt)
     {
         if(txt =="+") performOperation(Operator.PLUS);
