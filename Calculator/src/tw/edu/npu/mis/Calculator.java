@@ -11,7 +11,7 @@ package tw.edu.npu.mis;
  */
 public class Calculator extends java.util.Observable {
     String string= "",sym;
-    int num,num2,sum;
+    int num,num2,sum,num3;
     /**
      * The available operators of the calculator.
      */
@@ -39,7 +39,11 @@ public class Calculator extends java.util.Observable {
      * @param digit 
      */
     public void appendDigit(int digit) {
+      if(string.equals("0")){
+          string = "";
+      }
       string += String.valueOf(digit);
+      System.out.print(digit);
       getDisplay();
     }
     /**
@@ -58,14 +62,17 @@ public class Calculator extends java.util.Observable {
         switch(operator)
         {
             case PLUS:
+                performOperation(Operator.EQUAL);
                 num = Integer.parseInt(string);
-                string= "";
-                getDisplay();
+                string= "0";
+                //getDisplay();
                 sym ="+";
                 break;
+               
             case MINUS:
+                performOperation(Operator.EQUAL);
                 num = Integer.parseInt(string);
-                string= "";
+                string= "0";
                 getDisplay();
                 sym ="-";
                 break;
@@ -81,7 +88,12 @@ public class Calculator extends java.util.Observable {
                 getDisplay();
                 sym ="/";
                 break;
+            case CLEAR:
+                string= "";
+                getDisplay();
+                break;
             case CLEAR_ENTRY:
+                num = Integer.parseInt(string);
                 string= "";
                 getDisplay();
                 break;
@@ -94,7 +106,9 @@ public class Calculator extends java.util.Observable {
                     sum = num+num2;
                     string = String.valueOf(sum);
                     getDisplay();
-                    string="";
+                    //string="";
+                    num=0;
+                    System.out.println(string);
                 }
                 if(sym =="-")
                 {
@@ -102,7 +116,10 @@ public class Calculator extends java.util.Observable {
                     sum = num-num2;
                     string = String.valueOf(sum);
                     getDisplay();
-                    string="";
+                    //string="";
+                    num=0;
+                    
+                    System.out.println(string);
                 }
                 if(sym =="*")
                 {
@@ -110,7 +127,7 @@ public class Calculator extends java.util.Observable {
                     sum = num*num2;
                     string = String.valueOf(sum);
                     getDisplay();
-                    string="";
+                    //string="";
                 }
                 if(sym =="/")
                 {
@@ -118,12 +135,14 @@ public class Calculator extends java.util.Observable {
                     sum = num/num2;
                     string = String.valueOf(sum);
                     getDisplay();
-                    string="";
+                    //string="";
                 }
                 
                 
                 break;
+               
         }
+         System.out.println(operator);
     }
     /**
      * 顯示判斷運算結果
@@ -145,6 +164,7 @@ public class Calculator extends java.util.Observable {
         if(txt =="-") performOperation(Operator.MINUS);
         if(txt =="*") performOperation(Operator.TIMES);
         if(txt =="/") performOperation(Operator.OVER);
+        if(txt =="C") performOperation(Operator.CLEAR);
         if(txt =="CE") performOperation(Operator.CLEAR_ENTRY);
         if(txt =="=") performOperation(Operator.EQUAL);
     }
