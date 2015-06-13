@@ -70,9 +70,9 @@ public class Calculator extends java.util.Observable {
                 break;
                
             case MINUS:
-                performOperation(Operator.EQUAL);
+                
                 num = Integer.parseInt(string);
-                string= "0";
+                string= "";
                 getDisplay();
                 sym ="-";
                 break;
@@ -116,8 +116,8 @@ public class Calculator extends java.util.Observable {
                     sum = num-num2;
                     string = String.valueOf(sum);
                     getDisplay();
-                    //string="";
-                    num=0;
+                    string="";
+                    
                     
                     System.out.println(string);
                 }
@@ -127,7 +127,7 @@ public class Calculator extends java.util.Observable {
                     sum = num*num2;
                     string = String.valueOf(sum);
                     getDisplay();
-                    //string="";
+                    string="";
                 }
                 if(sym =="/")
                 {
@@ -135,7 +135,7 @@ public class Calculator extends java.util.Observable {
                     sum = num/num2;
                     string = String.valueOf(sum);
                     getDisplay();
-                    //string="";
+                    string="";
                 }
                 
                 
